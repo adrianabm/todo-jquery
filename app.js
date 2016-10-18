@@ -64,3 +64,11 @@ function nextTodoId() {
   $("#new-todo").val(null);
   updateCounters();
 }
+
+function cleanUpDoneTodos(event) {
+  event.preventDefault();
+  $.when($(".completed").remove())
+    .then(updateCounters);
+}
+
+$("#clean-up").bind('click', cleanUpDoneTodos);
